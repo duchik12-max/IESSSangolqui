@@ -1,0 +1,34 @@
+[
+    {
+        "nombre": "Carlos Ramirez",
+        "cedula": "1712345678",
+        "correo": "carlos.ramirez@hospital.com",
+        "usuario": "admin01",
+        "contrasena": "admin123",
+        "perfil": "Administrador"
+    },
+    {
+        "nombre": "Maria Fernandez",
+        "cedula": "1798765432",
+        "correo": "maria.fernandez@hospital.com",
+        "usuario": "director01",
+        "contrasena": "director123",
+        "perfil": "Director"
+    },
+    {
+        "nombre": "Luis Torres",
+        "cedula": "1755566677",
+        "correo": "luis.torres@hospital.com",
+        "usuario": "personal01",
+        "contrasena": "personal123",
+        "perfil": "Personal"
+    },
+    {
+        "nombre": "Ana Lopez",
+        "cedula": "1788899900",
+        "correo": "ana.lopez@correo.com",
+        "usuario": "paciente01",
+        "contrasena": "paciente123",
+        "perfil": "Paciente"
+    }
+]
