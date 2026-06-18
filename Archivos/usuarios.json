@@ -1,34 +1,74 @@
 [
-    {
-        "nombre": "Carlos Ramirez",
-        "cedula": "1712345678",
-        "correo": "carlos.ramirez@hospital.com",
-        "usuario": "admin01",
-        "contrasena": "admin123",
-        "perfil": "Administrador"
-    },
-    {
-        "nombre": "Maria Fernandez",
-        "cedula": "1798765432",
-        "correo": "maria.fernandez@hospital.com",
-        "usuario": "director01",
-        "contrasena": "director123",
-        "perfil": "Director"
-    },
-    {
-        "nombre": "Luis Torres",
-        "cedula": "1755566677",
-        "correo": "luis.torres@hospital.com",
-        "usuario": "personal01",
-        "contrasena": "personal123",
-        "perfil": "Personal"
-    },
-    {
-        "nombre": "Ana Lopez",
-        "cedula": "1788899900",
-        "correo": "ana.lopez@correo.com",
-        "usuario": "paciente01",
-        "contrasena": "paciente123",
-        "perfil": "Paciente"
-    }
+  {
+    "nombre": "Carlos Wendel",
+    "cedula": "1712345148",
+    "correo": "carlos.wen@gmail.com",
+    "usuario": "adminC",
+    "contrasena": "admin123",
+    "perfil": "Administrador",
+    "estado": true
+  },
+  {
+    "nombre": "Dra.Maria Fernandez",
+    "cedula": "1715765432",
+    "correo": "marif@hotmail.com",
+    "usuario": "directorMF",
+    "contrasena": "director987",
+    "perfil": "Director",
+    "estado": true
+  },
+  {
+    "nombre": "Dr. Gregory",
+    "cedula": "1755296647",
+    "correo": "gregor12@gmail.com",
+    "usuario": "docGR",
+    "contrasena": "personal1",
+    "perfil": "Personal",
+    "estado": true
+  },
+  {
+    "nombre": "Kevin Duchi",
+    "cedula": "1755074463",
+    "correo": "duchi.k@gmail.com",
+    "usuario": "redK",
+    "contrasena": "KDprueba",
+    "perfil": "Paciente",
+    "estado": true
+  },
+  {
+    "nombre": "Ana Lopez",
+    "cedula": "1781299154",
+    "correo": "ana.lopez@outlook.com",
+    "usuario": "Lopeza",
+    "contrasena": "paciente22",
+    "perfil": "Paciente",
+    "estado": false
+  },
+  {
+    "nombre": "Antonio Suarez",
+    "cedula": "1799912345",
+    "correo": "antonio.sur@hotmail.com",
+    "usuario": "antoad",
+    "contrasena": "admanton",
+    "perfil": "Administrador",
+    "estado": false
+  },
+  {
+    "nombre": "Dr. Many",
+    "cedula": "1799143451",
+    "correo": "man12@outlook.com",
+    "usuario": "many1",
+    "contrasena": "personal33",
+    "perfil": "Personal",
+    "estado": false
+  },
+  {
+    "nombre": "Dr. Emilio Puertas",
+    "cedula": "1734795432",
+    "correo": "emiport@gmail.com",
+    "usuario": "directorPuertas",
+    "contrasena": "director1",
+    "perfil": "Director",
+    "estado": true
+  }
 ]

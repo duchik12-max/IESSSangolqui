@@ -6,16 +6,15 @@ Paciente::Paciente() : Persona()
 {
     this->id = String::Empty;
     this->fechaConsulta = DateTime::Now;
-    this->estado = String::Empty;
+    this->asistencia = false;
 }
 
-Paciente::Paciente(String^ nombre, String^ cedula, String^ correo,
-    String^ id, DateTime fechaConsulta, String^ estado)
+Paciente::Paciente(String^ nombre, String^ cedula, String^ correo,String^ id, DateTime fechaConsulta, bool asistencia)
     : Persona(nombre, cedula, correo)
 {
     this->id = id;
     this->fechaConsulta = fechaConsulta;
-    this->estado = estado;
+    this->asistencia = asistencia;
 }
 // Setters y getters
 String^ Paciente::GetId()
@@ -38,12 +37,11 @@ void Paciente::SetFechaConsulta(DateTime valor)
     this->fechaConsulta = valor;
 }
 
-String^ Paciente::GetEstado()
+bool Paciente::GetAsistencia()
 {
-    return this->estado;
+	return this->asistencia;
 }
-
-void Paciente::SetEstado(String^ valor)
+void Paciente::SetAsistencia(bool valor)
 {
-    this->estado = valor;
+	this->asistencia = valor;
 }

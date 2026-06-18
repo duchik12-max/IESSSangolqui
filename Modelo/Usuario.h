@@ -9,10 +9,11 @@ namespace Modelo {
         String^ usuario;
         String^ contrasena;
         String^ perfil;
+        bool estado;
 
     public:
         Usuario();
-        Usuario(String^ nombre, String^ cedula, String^ correo, String^ usuario, String^ contrasena, String^ perfil);
+        Usuario(String^ nombre, String^ cedula, String^ correo, String^ usuario, String^ contrasena, String^ perfil, bool estado);
 
         // Getters y setters 
         String^ GetUsuario();
@@ -23,6 +24,9 @@ namespace Modelo {
 
         String^ GetPerfil();
         void SetPerfil(String^ valor);
+
+		bool GetEstado();
+		void SetEstado(bool valor);
         //Metodos compara usuario y contraseña recibidos contra los propios
         bool ValidarCredenciales(String^ usuarioIngresado, String^ contrasenaIngresada);
     };

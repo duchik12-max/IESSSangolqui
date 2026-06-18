@@ -6,20 +6,21 @@ using namespace Modelo;
 namespace Controlador {
 
     // Resultado de un intento de inicio de sesion.
-    // Se usa en vez de lanzar excepciones para distinguir
-    // entre "credenciales invalidas" y "perfil reconocido".
+    // Se usa en vez de lanzar excepciones para distinguir entre "credenciales invalidas", "usuario inactivo" y "acceso correcto"
     public ref class ResultadoLogin
     {
     public:
         bool exitoso;
         String^ perfil;
         Modelo::Usuario^ usuario;
+		String^ mensajeError;
 
         ResultadoLogin()
         {
             exitoso = false;
             perfil = String::Empty;
             usuario = nullptr;
+			mensajeError = String::Empty;
         }
     };
 

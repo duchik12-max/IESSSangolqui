@@ -24,6 +24,7 @@ ResultadoLogin^ ControladorLogin::ValidarLogin(String^ usuarioIngresado, String^
         contrasenaIngresada->Trim()->Equals(String::Empty))
     {
         resultado->exitoso = false;
+        resultado->mensajeError = "Debe ingresar usuario y contraseña.";
         return resultado;
     }
 
@@ -32,19 +33,27 @@ ResultadoLogin^ ControladorLogin::ValidarLogin(String^ usuarioIngresado, String^
     if (usuarioEncontrado == nullptr)
     {
         resultado->exitoso = false;
+		resultado->mensajeError = "Usuario no encontrado.";
         return resultado;
     }
 
-    if (usuarioEncontrado->ValidarCredenciales(usuarioIngresado, contrasenaIngresada))
-    {
-        resultado->exitoso = true;
-        resultado->perfil = usuarioEncontrado->GetPerfil();
-        resultado->usuario = usuarioEncontrado;
-    }
-    else
+    if (!usuarioEncontrado->ValidarCredenciales(usuarioIngresado, contrasenaIngresada))
     {
         resultado->exitoso = false;
+        resultado->mensajeError = "Usuario o contraseña incorrectos.";
+        return resultado;
     }
+
+    if (!usuarioEncontrado->GetEstado())
+    {
+        resultado->exitoso = false;
+        resultado->mensajeError = "El usuario se encuentra bloqueado";
+        return resultado;
+    }
+
+    resultado->exitoso = true;
+    resultado->perfil = usuarioEncontrado->GetPerfil();
+    resultado->usuario = usuarioEncontrado;
 
     return resultado;
 }

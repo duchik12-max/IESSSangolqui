@@ -192,7 +192,6 @@ namespace Vista {
 		// Application::StartupPath apunta a la carpeta bin/Debug del ejecutable,
 		// por eso se sube hasta la carpeta de la solucion con "..\..\..\"
 		// String^ rutaJson = System::IO::Path::Combine(Application::StartupPath, "..\\..\\..\\usuarios.json"); carpeta debug usarlo asi o la ruta
-		// Ajusta la cantidad de "..\" segun la profundidad real de tu output.
 		String^ rutaJson = System::IO::Path::Combine(
 			Application::StartupPath, "C:\\Users\\PC\\Documents\\Salesiana\\Segundo Semestre\\POO\\Proyectos_Visual\\ProyHospitalKD\\IESSSangolqui\\Archivos\\usuarios.json");
 
@@ -201,8 +200,7 @@ namespace Vista {
 
 		if (!resultado->exitoso)
 		{
-			MessageBox::Show("Usuario o contraseña incorrectos.", "Error de acceso",
-				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			MessageBox::Show(resultado->mensajeError, "Error de acceso",MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
 		}
 		MessageBox::Show("Hola " + resultado->usuario->GetNombre(),"Bienvenid@", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
@@ -234,8 +232,7 @@ namespace Vista {
 		}
 		else
 		{
-			MessageBox::Show("Perfil no reconocido en el sistema.", "Error",
-				MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("Perfil no reconocido en el sistema.", "Error",MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		
 	}

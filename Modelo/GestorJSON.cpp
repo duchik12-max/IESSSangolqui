@@ -75,6 +75,7 @@ List<Usuario^>^ GestorJSON::CargarUsuarios()
             std::string usuarioStd = registro.value("usuario", "");
             std::string contrasenaStd = registro.value("contrasena", "");
             std::string perfilStd = registro.value("perfil", "");
+            bool estadoValor = registro.value("estado", false);
 
             // Conversion de std::string (nativo) a String^ (administrado)
             String^ nombre = marshal_as<String^>(nombreStd);
@@ -84,8 +85,7 @@ List<Usuario^>^ GestorJSON::CargarUsuarios()
             String^ contrasena = marshal_as<String^>(contrasenaStd);
             String^ perfil = marshal_as<String^>(perfilStd);
 
-            Usuario^ nuevoUsuario = gcnew Usuario(
-                nombre, cedula, correo, usuario, contrasena, perfil);
+            Usuario^ nuevoUsuario = gcnew Usuario(nombre, cedula, correo, usuario, contrasena, perfil, estadoValor);
 
             listaUsuarios->Add(nuevoUsuario);
         }

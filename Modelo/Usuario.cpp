@@ -7,15 +7,17 @@ Usuario::Usuario() : Persona()
     this->usuario = String::Empty;
     this->contrasena = String::Empty;
     this->perfil = String::Empty;
+	this->estado = false;
 }
 
 Usuario::Usuario(String^ nombre, String^ cedula, String^ correo,
-    String^ usuario, String^ contrasena, String^ perfil)
+    String^ usuario, String^ contrasena, String^ perfil, bool estado)
     : Persona(nombre, cedula, correo)
 {
     this->usuario = usuario;
     this->contrasena = contrasena;
     this->perfil = perfil;
+    this->estado = estado;
 }
 
 String^ Usuario::GetUsuario()
@@ -46,6 +48,15 @@ String^ Usuario::GetPerfil()
 void Usuario::SetPerfil(String^ valor)
 {
     this->perfil = valor;
+}
+bool Usuario::GetEstado()
+{
+    return this->estado;
+}
+
+void Usuario::SetEstado(bool valor)
+{
+    this->estado = valor;
 }
 
 bool Usuario::ValidarCredenciales(String^ usuarioIngresado, String^ contrasenaIngresada)

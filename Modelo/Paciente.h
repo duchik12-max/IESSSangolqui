@@ -8,12 +8,12 @@ namespace Modelo {
     private:
         String^ id;
         DateTime fechaConsulta;
-        String^ estado;
+        bool asistencia;
 
     public:
         Paciente();
         Paciente(String^ nombre, String^ cedula, String^ correo,
-            String^ id, DateTime fechaConsulta, String^ estado);
+            String^ id, DateTime fechaConsulta, bool asistencia);
 
         String^ GetId();
         void SetId(String^ valor);
@@ -21,7 +21,7 @@ namespace Modelo {
         DateTime GetFechaConsulta();
         void SetFechaConsulta(DateTime valor);
 
-        String^ GetEstado();
-        void SetEstado(String^ valor);
+		bool GetAsistencia();
+		void SetAsistencia(bool valor);
     };
 }
