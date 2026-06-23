@@ -1,17 +1,17 @@
 #include "pch.h"
 #include "Usuario.h"
+
 using namespace Modelo;
 
 Usuario::Usuario() : Persona()
 {
-    this->usuario = String::Empty;
-    this->contrasena = String::Empty;
-    this->perfil = String::Empty;
-	this->estado = false;
+    this->usuario = "";
+    this->contrasena = "";
+    this->perfil = "";
+    this->estado = false;
 }
 
-Usuario::Usuario(String^ nombre, String^ cedula, String^ correo,
-    String^ usuario, String^ contrasena, String^ perfil, bool estado)
+Usuario::Usuario(string nombre, string cedula, string correo,string usuario, string contrasena, string perfil, bool estado)
     : Persona(nombre, cedula, correo)
 {
     this->usuario = usuario;
@@ -20,50 +20,35 @@ Usuario::Usuario(String^ nombre, String^ cedula, String^ correo,
     this->estado = estado;
 }
 
-String^ Usuario::GetUsuario()
-{
-    return this->usuario;
+string Usuario::getUsuario() const {
+    return this->usuario; 
+}
+void Usuario::setUsuario(string valor) {
+    this->usuario = valor; 
 }
 
-void Usuario::SetUsuario(String^ valor)
-{
-    this->usuario = valor;
+string Usuario::getContrasena() const {
+    return this->contrasena; 
+}
+void Usuario::setContrasena(string valor) {
+    this->contrasena = valor; 
 }
 
-String^ Usuario::GetContrasena()
-{
-    return this->contrasena;
+string Usuario::getPerfil() const {
+    return this->perfil; 
+}
+void Usuario::setPerfil(string valor) {
+    this->perfil = valor; 
 }
 
-void Usuario::SetContrasena(String^ valor)
-{
-    this->contrasena = valor;
+bool Usuario::getEstado() const {
+    return this->estado; 
+}
+void Usuario::setEstado(bool valor) {
+    this->estado = valor; 
 }
 
-String^ Usuario::GetPerfil()
+bool Usuario::ValidarCredenciales(string usuarioIngresado, string contrasenaIngresada) const
 {
-    return this->perfil;
-}
-
-void Usuario::SetPerfil(String^ valor)
-{
-    this->perfil = valor;
-}
-bool Usuario::GetEstado()
-{
-    return this->estado;
-}
-
-void Usuario::SetEstado(bool valor)
-{
-    this->estado = valor;
-}
-
-bool Usuario::ValidarCredenciales(String^ usuarioIngresado, String^ contrasenaIngresada)
-{
-    if (usuarioIngresado == nullptr || contrasenaIngresada == nullptr)
-        return false;
-
-    return this->usuario->Equals(usuarioIngresado) &&
-        this->contrasena->Equals(contrasenaIngresada);
+    return this->usuario == usuarioIngresado && this->contrasena == contrasenaIngresada;
 }

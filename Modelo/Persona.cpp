@@ -1,51 +1,41 @@
 #include "pch.h"
 #include "Persona.h"
+
 using namespace Modelo;
-//constructor, destrcutor
+
 Persona::Persona()
 {
-    this->nombre = String::Empty;
-    this->cedula = String::Empty;
-    this->correo = String::Empty;
+    this->nombre = "";
+    this->cedula = "";
+    this->correo = "";
 }
 
-Persona::Persona(String^ nombre, String^ cedula, String^ correo)
+Persona::Persona(string nombre, string cedula, string correo)
 {
     this->nombre = nombre;
     this->cedula = cedula;
     this->correo = correo;
 }
 
-Persona::~Persona()
-{
-}
-//setter getter
-String^ Persona::GetNombre()
-{
+Persona::~Persona() {}
+
+string Persona::getNombre() const {
     return this->nombre;
 }
-
-void Persona::SetNombre(String^ valor)
-{
+void Persona::setNombre(string valor) {
     this->nombre = valor;
 }
 
-String^ Persona::GetCedula()
-{
-    return this->cedula;
+string Persona::getCedula() const {
+    return this->cedula; 
+}
+void Persona::setCedula(string valor) {
+    this->cedula = valor; 
 }
 
-void Persona::SetCedula(String^ valor)
-{
-    this->cedula = valor;
+string Persona::getCorreo() const {
+    return this->correo; 
 }
-
-String^ Persona::GetCorreo()
-{
-    return this->correo;
-}
-
-void Persona::SetCorreo(String^ valor)
-{
-    this->correo = valor;
+void Persona::setCorreo(string valor) {
+    this->correo = valor; 
 }

@@ -69,6 +69,6 @@
     "usuario": "directorPuertas",
     "contrasena": "director1",
     "perfil": "Director",
-    "estado": true
+    "estado": false
   }
 ]

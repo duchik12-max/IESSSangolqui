@@ -1,40 +1,45 @@
 #pragma once
+#include "../Modelo/Archivo.h"
+#include "../Modelo/Usuario.h"
+#include <string>
+#include <vector>
 
-
-using namespace System;
+using namespace std;
 using namespace Modelo;
+
 namespace Controlador {
 
-    // Resultado de un intento de inicio de sesion.
-    // Se usa en vez de lanzar excepciones para distinguir entre "credenciales invalidas", "usuario inactivo" y "acceso correcto"
-    public ref class ResultadoLogin
+    // Resultado del intento de login. Todo nativo, sin String^.
+    struct ResultadoLogin
     {
-    public:
         bool exitoso;
-        String^ perfil;
-        Modelo::Usuario^ usuario;
-		String^ mensajeError;
+        string perfil;
+        string nombreUsuario;   // para el MessageBox de bienvenida en Vista
+        string mensajeError;
 
         ResultadoLogin()
         {
             exitoso = false;
-            perfil = String::Empty;
-            usuario = nullptr;
-			mensajeError = String::Empty;
+            perfil = "";
+            nombreUsuario = "";
+            mensajeError = "";
         }
     };
 
-    public ref class ControladorLogin
+    class ControladorLogin
     {
     private:
-        Modelo::GestorJSON^ gestorJson;
+        Archivo* archivo;
+
+        vector<Usuario> cargarUsuarios();
+        bool buscarUsuario(const string& nombreUsuario, Usuario& usuarioSalida);
 
     public:
-        ControladorLogin();
-        ControladorLogin(String^ rutaArchivoJson);
+        ControladorLogin(const string& rutaArchivoJson);
+        ~ControladorLogin();
 
-        // Valida usuario y contrasena contra el archivo JSON.
-        // Devuelve un ResultadoLogin con el perfil si las credenciales coinciden.
-        ResultadoLogin^ ValidarLogin(String^ usuarioIngresado, String^ contrasenaIngresada);
+        // Devuelve puntero; el llamador es responsable de hacer delete
+        ResultadoLogin* validarLogin(const string& usuarioIngresado,
+            const string& contrasenaIngresada);
     };
 }

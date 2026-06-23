@@ -1,28 +1,35 @@
 #pragma once
 #include "Persona.h"
-using namespace System;
+#include <string>
+
+using namespace std;
+
 namespace Modelo {
-    public ref class Trabajador :
-        public Persona
+
+    class Trabajador : public Persona
     {
-    private:
-        String^ numIdentificador;
-        String^ area;
-        String^ tarea;
+    protected:
+        string horaInicio;
+        string horaFin;
+        string dia;
+        string area;
 
     public:
         Trabajador();
-        Trabajador(String^ nombre, String^ cedula, String^ correo,
-            String^ numIdentificador, String^ area, String^ tarea);
+        Trabajador(string nombre, string cedula, string correo,
+            string horaInicio, string horaFin, string dia, string area);
 
-        String^ GetNumIdentificador();
-        void SetNumIdentificador(String^ valor);
+        string getHoraInicio() const;
+        void setHoraInicio(string valor);
 
-        String^ GetArea();
-        void SetArea(String^ valor);
+        string getHoraFin() const;
+        void setHoraFin(string valor);
 
-        String^ GetTarea();
-        void SetTarea(String^ valor);
+        string getDia() const;
+        void setDia(string valor);
+
+        string getArea() const;
+        void setArea(string valor);
     };
 }
 

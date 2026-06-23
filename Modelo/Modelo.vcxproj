@@ -42,7 +42,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CLRSupport>true</CLRSupport>
@@ -131,7 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GestorJSON.h" />
+    <ClInclude Include="Archivo.h" />
     <ClInclude Include="Modelo.h" />
     <ClInclude Include="Paciente.h" />
     <ClInclude Include="pch.h" />
@@ -141,8 +141,8 @@
     <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Archivo.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="GestorJSON.cpp" />
     <ClCompile Include="Modelo.cpp" />
     <ClCompile Include="Paciente.cpp" />
     <ClCompile Include="pch.cpp">

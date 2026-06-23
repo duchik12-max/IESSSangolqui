@@ -1,47 +1,41 @@
 #include "pch.h"
 #include "Paciente.h"
+
 using namespace Modelo;
 
 Paciente::Paciente() : Persona()
 {
-    this->id = String::Empty;
-    this->fechaConsulta = DateTime::Now;
+    this->id = "";
+    this->fechaConsulta = "";
     this->asistencia = false;
 }
 
-Paciente::Paciente(String^ nombre, String^ cedula, String^ correo,String^ id, DateTime fechaConsulta, bool asistencia)
+Paciente::Paciente(string nombre, string cedula, string correo,
+    string id, string fechaConsulta, bool asistencia)
     : Persona(nombre, cedula, correo)
 {
     this->id = id;
     this->fechaConsulta = fechaConsulta;
     this->asistencia = asistencia;
 }
-// Setters y getters
-String^ Paciente::GetId()
-{
-    return this->id;
+
+string Paciente::getId() const {
+    return this->id; 
+}
+void Paciente::setId(string valor) {
+    this->id = valor; 
 }
 
-void Paciente::SetId(String^ valor)
-{
-    this->id = valor;
+string Paciente::getFechaConsulta() const {
+    return this->fechaConsulta; 
+}
+void Paciente::setFechaConsulta(string valor) {
+    this->fechaConsulta = valor; 
 }
 
-DateTime Paciente::GetFechaConsulta()
-{
-    return this->fechaConsulta;
+bool Paciente::getAsistencia() const {
+    return this->asistencia; 
 }
-
-void Paciente::SetFechaConsulta(DateTime valor)
-{
-    this->fechaConsulta = valor;
-}
-
-bool Paciente::GetAsistencia()
-{
-	return this->asistencia;
-}
-void Paciente::SetAsistencia(bool valor)
-{
-	this->asistencia = valor;
+void Paciente::setAsistencia(bool valor) {
+    this->asistencia = valor; 
 }

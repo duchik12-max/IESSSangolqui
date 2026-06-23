@@ -1,59 +1,102 @@
 #include "pch.h"
+
 #include "ControladorLogin.h"
 
 using namespace Controlador;
-using namespace Modelo;
+using json = nlohmann::json;
 
-ControladorLogin::ControladorLogin()
+ControladorLogin::ControladorLogin(const string& rutaArchivoJson)
 {
-    // Ruta por defecto, en la carpeta de la solucion
-    this->gestorJson = gcnew GestorJSON("usuarios.json");
+    this->archivo = new Archivo(rutaArchivoJson, "Archivo de usuarios del sistema");
 }
 
-ControladorLogin::ControladorLogin(String^ rutaArchivoJson)
+ControladorLogin::~ControladorLogin()
 {
-    this->gestorJson = gcnew GestorJSON(rutaArchivoJson);
+    delete this->archivo;
 }
 
-ResultadoLogin^ ControladorLogin::ValidarLogin(String^ usuarioIngresado, String^ contrasenaIngresada)
+vector<Usuario> ControladorLogin::cargarUsuarios()
 {
-    ResultadoLogin^ resultado = gcnew ResultadoLogin();
+    vector<Usuario> lista;
+    json datos;
 
-    if (usuarioIngresado == nullptr || contrasenaIngresada == nullptr ||
-        usuarioIngresado->Trim()->Equals(String::Empty) ||
-        contrasenaIngresada->Trim()->Equals(String::Empty))
+    if (!this->archivo->leerJSON(datos))
+        return lista;
+
+    if (!datos.is_array())
+        return lista;
+
+    for (const auto& reg : datos)
     {
-        resultado->exitoso = false;
-        resultado->mensajeError = "Debe ingresar usuario y contraseña.";
+        try
+        {
+            string nombre = reg.value("nombre", "");
+            string cedula = reg.value("cedula", "");
+            string correo = reg.value("correo", "");
+            string usuario = reg.value("usuario", "");
+            string contrasena = reg.value("contrasena", "");
+            string perfil = reg.value("perfil", "");
+            bool estado = reg.value("estado", false);
+
+            lista.push_back(Usuario(nombre, cedula, correo,
+                usuario, contrasena, perfil, estado));
+        }
+        catch (...)
+        {
+            continue;
+        }
+    }
+
+    return lista;
+}
+
+bool ControladorLogin::buscarUsuario(const string& nombreUsuario, Usuario& usuarioSalida)
+{
+    vector<Usuario> lista = cargarUsuarios();
+
+    for (const Usuario& u : lista)
+    {
+        if (u.getUsuario() == nombreUsuario)
+        {
+            usuarioSalida = u;
+            return true;
+        }
+    }
+    return false;
+}
+
+ResultadoLogin *ControladorLogin::validarLogin(const string& usuarioIngresado,
+    const string& contrasenaIngresada)
+{
+    ResultadoLogin *resultado = new ResultadoLogin();
+
+    if (usuarioIngresado.empty() || contrasenaIngresada.empty())
+    {
+        resultado->mensajeError = "Debe ingresar usuario y contrasena";
         return resultado;
     }
 
-    Usuario^ usuarioEncontrado = this->gestorJson->BuscarPorUsuario(usuarioIngresado);
-
-    if (usuarioEncontrado == nullptr)
+    Usuario encontrado;
+    if (!buscarUsuario(usuarioIngresado, encontrado))
     {
-        resultado->exitoso = false;
-		resultado->mensajeError = "Usuario no encontrado.";
+        resultado->mensajeError = "Usuario o contrasena incorrectos";
         return resultado;
     }
 
-    if (!usuarioEncontrado->ValidarCredenciales(usuarioIngresado, contrasenaIngresada))
+    if (!encontrado.ValidarCredenciales(usuarioIngresado, contrasenaIngresada))
     {
-        resultado->exitoso = false;
-        resultado->mensajeError = "Usuario o contraseña incorrectos.";
+        resultado->mensajeError = "Usuario o contrasena incorrectos";
         return resultado;
     }
 
-    if (!usuarioEncontrado->GetEstado())
+    if (!encontrado.getEstado())
     {
-        resultado->exitoso = false;
         resultado->mensajeError = "El usuario se encuentra bloqueado";
         return resultado;
     }
 
     resultado->exitoso = true;
-    resultado->perfil = usuarioEncontrado->GetPerfil();
-    resultado->usuario = usuarioEncontrado;
-
+    resultado->perfil = encontrado.getPerfil();
+    resultado->nombreUsuario = encontrado.getNombre();
     return resultado;
 }

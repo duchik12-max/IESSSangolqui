@@ -1,49 +1,49 @@
 #include "pch.h"
 #include "Trabajador.h"
+
 using namespace Modelo;
 
 Trabajador::Trabajador() : Persona()
 {
-    this->numIdentificador = String::Empty;
-    this->area = String::Empty;
-    this->tarea = String::Empty;
+    this->horaInicio = "";
+    this->horaFin = "";
+    this->dia = "";
+    this->area = "";
 }
 
-Trabajador::Trabajador(String^ nombre, String^ cedula, String^ correo,
-    String^ numIdentificador, String^ area, String^ tarea)
+Trabajador::Trabajador(string nombre, string cedula, string correo,string horaInicio, string horaFin, string dia, string area)
     : Persona(nombre, cedula, correo)
 {
-    this->numIdentificador = numIdentificador;
+    this->horaInicio = horaInicio;
+    this->horaFin = horaFin;
+    this->dia = dia;
     this->area = area;
-    this->tarea = tarea;
 }
 
-String^ Trabajador::GetNumIdentificador()
-{
-    return this->numIdentificador;
+string Trabajador::getHoraInicio() const {
+    return this->horaInicio; 
+}
+void Trabajador::setHoraInicio(string valor) {
+    this->horaInicio = valor; 
 }
 
-void Trabajador::SetNumIdentificador(String^ valor)
-{
-    this->numIdentificador = valor;
+string Trabajador::getHoraFin() const {
+    return this->horaFin; 
+}
+void Trabajador::setHoraFin (string valor) {
+    this->horaFin = valor;
 }
 
-String^ Trabajador::GetArea()
-{
+string Trabajador::getDia() const {
+    return this->dia;
+}
+void Trabajador::setDia(string valor) {
+    this->dia = valor;
+}
+
+string Trabajador::getArea() const {
     return this->area;
 }
-
-void Trabajador::SetArea(String^ valor)
-{
+void Trabajador::setArea(string valor) {
     this->area = valor;
-}
-
-String^ Trabajador::GetTarea()
-{
-    return this->tarea;
-}
-
-void Trabajador::SetTarea(String^ valor)
-{
-    this->tarea = valor;
 }

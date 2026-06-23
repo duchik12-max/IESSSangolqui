@@ -1,27 +1,30 @@
 #pragma once
 #include "Persona.h"
-using namespace System;
+#include <string>
+
+using namespace std;
+
 namespace Modelo {
-    public ref class Paciente :
-        public Persona
+
+    // No se utiliza todavia; metodos pendientes de definir.
+    class Paciente : public Persona
     {
-    private:
-        String^ id;
-        DateTime fechaConsulta;
+    protected:
+        string id;
+        string fechaConsulta;   // Se maneja como string "dd/MM/yyyy" para evitar DateTime administrado
         bool asistencia;
 
     public:
         Paciente();
-        Paciente(String^ nombre, String^ cedula, String^ correo,
-            String^ id, DateTime fechaConsulta, bool asistencia);
+        Paciente(string nombre, string cedula, string correo,string id, string fechaConsulta, bool asistencia);
 
-        String^ GetId();
-        void SetId(String^ valor);
+        string getId() const;
+        void setId(string valor);
 
-        DateTime GetFechaConsulta();
-        void SetFechaConsulta(DateTime valor);
+        string getFechaConsulta() const;
+        void setFechaConsulta(string valor);
 
-		bool GetAsistencia();
-		void SetAsistencia(bool valor);
+        bool getAsistencia() const;
+        void setAsistencia(bool valor);
     };
 }

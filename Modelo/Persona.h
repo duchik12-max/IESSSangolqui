@@ -1,28 +1,29 @@
 #pragma once
-using namespace System;
+#include <string>
+using namespace std;
+
 namespace Modelo {
-    // Clase base
-    public ref class Persona
+
+    class Persona
     {
     protected:
-        String^ nombre;
-        String^ cedula;
-        String^ correo;
+        string nombre;
+        string cedula;
+        string correo;
 
     public:
         Persona();
-        Persona(String^ nombre, String^ cedula, String^ correo);
+        Persona(string nombre, string cedula, string correo);
         virtual ~Persona();
 
-        // Getters y setters
-        String^ GetNombre();
-        void SetNombre(String^ valor);
+        string getNombre() const;
+        void setNombre(string valor);
 
-        String^ GetCedula();
-        void SetCedula(String^ valor);
+        string getCedula() const;
+        void setCedula(string valor);
 
-        String^ GetCorreo();
-        void SetCorreo(String^ valor);
+        string getCorreo() const;
+        void setCorreo(string valor);
     };
 }
 

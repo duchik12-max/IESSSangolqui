@@ -1,34 +1,37 @@
 #pragma once
 #include "Persona.h"
-using namespace System;
+#include <string>
+
+using namespace std;
+
 namespace Modelo {
-    public ref class Usuario :
-        public Persona
+
+    class Usuario : public Persona
     {
-    private:
-        String^ usuario;
-        String^ contrasena;
-        String^ perfil;
+    protected:
+        string usuario;
+        string contrasena;
+        string perfil;
         bool estado;
 
     public:
         Usuario();
-        Usuario(String^ nombre, String^ cedula, String^ correo, String^ usuario, String^ contrasena, String^ perfil, bool estado);
+        Usuario(string nombre, string cedula, string correo,
+            string usuario, string contrasena, string perfil, bool estado);
 
-        // Getters y setters 
-        String^ GetUsuario();
-        void SetUsuario(String^ valor);
+        string getUsuario() const;
+        void setUsuario(string valor);
 
-        String^ GetContrasena();
-        void SetContrasena(String^ valor);
+        string getContrasena() const;
+        void setContrasena(string valor);
 
-        String^ GetPerfil();
-        void SetPerfil(String^ valor);
+        string getPerfil() const;
+        void setPerfil(string valor);
 
-		bool GetEstado();
-		void SetEstado(bool valor);
-        //Metodos compara usuario y contraseña recibidos contra los propios
-        bool ValidarCredenciales(String^ usuarioIngresado, String^ contrasenaIngresada);
+        bool getEstado() const;
+        void setEstado(bool valor);
+
+        bool ValidarCredenciales(string usuarioIngresado, string contrasenaIngresada) const;
     };
 }
 

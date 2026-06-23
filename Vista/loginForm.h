@@ -1,5 +1,6 @@
 #pragma once
-//#include "ControladorLogin.h"
+#include "../Controlador/ControladorLogin.h"
+#include <msclr/marshal_cppstd.h>
 #include "menuAdminForm.h"
 #include "menuDirectorForm.h"
 #include "menuPersonalForm.h"
@@ -16,7 +17,7 @@ namespace Vista {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace Controlador;
+
 	/// <summary>
 	/// Resumen de loginForm
 	/// </summary>
@@ -184,57 +185,66 @@ namespace Vista {
 		}
 #pragma endregion
 	private: System::Void btnIngresar_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		String^ usuarioIngresado = this->txtUsuario->Text;
-		String^ contrasenaIngresada = this->txtContra->Text;
+		// ---- Conversión String^ -> std::string (unica vez, al leer los controles) ----
+		String^ textoUsuario = this->txtUsuario->Text;
+		string usuarioIngresado = msclr::interop::marshal_as<string>(textoUsuario);
 
-		// Ruta del archivo JSON en la carpeta de la solucion.
-		// Application::StartupPath apunta a la carpeta bin/Debug del ejecutable,
-		// por eso se sube hasta la carpeta de la solucion con "..\..\..\"
-		// String^ rutaJson = System::IO::Path::Combine(Application::StartupPath, "..\\..\\..\\usuarios.json"); carpeta debug usarlo asi o la ruta
-		String^ rutaJson = System::IO::Path::Combine(
-			Application::StartupPath, "C:\\Users\\PC\\Documents\\Salesiana\\Segundo Semestre\\POO\\Proyectos_Visual\\ProyHospitalKD\\IESSSangolqui\\Archivos\\usuarios.json");
+		String^ textoContra = this->txtContra->Text;
+		string contrasenaIngresada = msclr::interop::marshal_as<string>(textoContra);
 
-		ControladorLogin^ controlador = gcnew ControladorLogin(rutaJson);
-		ResultadoLogin^ resultado = controlador->ValidarLogin(usuarioIngresado, contrasenaIngresada);
+		// Ruta del JSON: ajusta los ".." segun la profundidad de tu carpeta bin/Debug
+		string rutaJson = msclr::interop::marshal_as<string>(
+			System::IO::Path::Combine(Application::StartupPath, "C:\\Users\\PC\\Documents\\Salesiana\\Segundo Semestre\\POO\\Proyectos_Visual\\ProyHospitalKD\\IESSSangolqui\\Archivos\\usuarios.json"));
+
+		Controlador::ControladorLogin controlador(rutaJson);
+		Controlador::ResultadoLogin* resultado = controlador.validarLogin(usuarioIngresado,
+			contrasenaIngresada);
 
 		if (!resultado->exitoso)
 		{
-			MessageBox::Show(resultado->mensajeError, "Error de acceso",MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			// ---- Conversión std::string -> String^ (para mostrar en MessageBox) ----
+			String^ mensaje = msclr::interop::marshal_as<String^>(resultado->	mensajeError);
+			MessageBox::Show(mensaje, "Error de acceso",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
 		}
-		MessageBox::Show("Hola " + resultado->usuario->GetNombre(),"Bienvenid@", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
-		// Redireccion segun perfil
-		if (resultado->perfil->Equals("Administrador"))
+
+		// ---- Conversión std::string -> String^ (para mostrar el nombre en bienvenida) ----
+		String^ nombreBienvenida = msclr::interop::marshal_as<String^>(resultado->nombreUsuario);
+		MessageBox::Show("Bienvenido/a, " + nombreBienvenida, "Acceso correcto",
+			MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		// Redireccion segun perfil (la comparacion se hace con std::string nativo)
+		if (resultado->perfil == "Administrador")
 		{
 			menuAdminForm^ menu = gcnew menuAdminForm();
 			menu->Show();
 			this->Hide();
 		}
-		else if (resultado->perfil->Equals("Director"))
+		else if (resultado->perfil == "Director")
 		{
 			menuDirectorForm^ menu = gcnew menuDirectorForm();
 			menu->Show();
 			this->Hide();
 		}
-		else if (resultado->perfil->Equals("Personal"))
+		else if (resultado->perfil == "Personal")
 		{
 			menuPersonalForm^ menu = gcnew menuPersonalForm();
 			menu->Show();
 			this->Hide();
 		}
-		else if (resultado->perfil->Equals("Paciente"))
+		else if (resultado->perfil == "Paciente")
 		{
 			menuPacienteForm^ menu = gcnew menuPacienteForm();
 			menu->Show();
-
 			this->Hide();
 		}
 		else
 		{
-			MessageBox::Show("Perfil no reconocido en el sistema.", "Error",MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("Perfil no reconocido en el sistema.", "Error",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-		
+			
 	}
 };
 }
