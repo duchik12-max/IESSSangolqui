@@ -132,6 +132,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Archivo.h" />
+    <ClInclude Include="ArchivoCorruptoException.h" />
+    <ClInclude Include="ArchivoNoEncontradoException.h" />
+    <ClInclude Include="Doctor.h" />
     <ClInclude Include="Modelo.h" />
     <ClInclude Include="Paciente.h" />
     <ClInclude Include="pch.h" />
@@ -143,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="Archivo.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Doctor.cpp" />
     <ClCompile Include="Modelo.cpp" />
     <ClCompile Include="Paciente.cpp" />
     <ClCompile Include="pch.cpp">

@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Controlador.h" />
+    <ClInclude Include="ControladorDoctor.h" />
     <ClInclude Include="ControladorLogin.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
@@ -142,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Controlador.cpp" />
+    <ClCompile Include="ControladorDoctor.cpp" />
     <ClCompile Include="ControladorLogin.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

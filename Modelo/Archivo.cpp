@@ -143,4 +143,42 @@ namespace Modelo {
             cout << "Error: No se pudo abrir el archivo CSV para escritura." << endl;
         }
     }
+    //definicion de los nuevos metodos para las imagenes jpg
+    void Archivo::verificarImagenJPG(const string& rutaOrigen)
+    {
+        // Verificar existencia
+        ifstream archivo(rutaOrigen, ios::binary);
+        if (!archivo.is_open())
+        {
+            throw ArchivoNoEncontradoException(rutaOrigen);
+        }
+
+        // Verificar firma JPG: primeros 3 bytes deben ser FF D8 FF
+        unsigned char firma[3];
+        archivo.read(reinterpret_cast<char*>(firma), 3);
+        archivo.close();
+
+        if (firma[0] != 0xFF || firma[1] != 0xD8 || firma[2] != 0xFF)
+        {
+            throw ArchivoCorruptoException(rutaOrigen);
+        }
+    }
+
+    bool Archivo::copiarImagenJPG(const string& rutaOrigen, const string& rutaDestino)
+    {
+        // Lanza excepcion si no existe o esta corrupto
+        verificarImagenJPG(rutaOrigen);
+
+        ifstream origen(rutaOrigen, ios::binary);
+        ofstream destino(rutaDestino, ios::binary);
+
+        if (!origen.is_open() || !destino.is_open())
+            return false;
+
+        destino << origen.rdbuf();
+
+        origen.close();
+        destino.close();
+        return true;
+    }
 }

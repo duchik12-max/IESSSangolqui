@@ -41,6 +41,8 @@ namespace Vista {
 	private: System::Windows::Forms::ToolStripMenuItem^ opcionesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ salToolStripMenuItem;
 
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 
 	private:
 		/// <summary>
@@ -61,13 +63,15 @@ namespace Vista {
 			this->bitácoraToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->opcionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->menuStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(231, 182);
+			this->label1->Location = System::Drawing::Point(290, 57);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(161, 16);
 			this->label1->TabIndex = 1;
@@ -82,7 +86,7 @@ namespace Vista {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(677, 28);
+			this->menuStrip1->Size = System::Drawing::Size(836, 28);
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -109,11 +113,22 @@ namespace Vista {
 			this->salToolStripMenuItem->Text = L"Salir";
 			this->salToolStripMenuItem->Click += gcnew System::EventHandler(this, &menuAdminForm::salToolStripMenuItem_Click);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(274, 114);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(296, 207);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 4;
+			this->pictureBox1->TabStop = false;
+			// 
 			// menuAdminForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(677, 430);
+			this->ClientSize = System::Drawing::Size(836, 484);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->menuStrip1);
 			this->IsMdiContainer = true;
@@ -123,6 +138,7 @@ namespace Vista {
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -135,5 +151,6 @@ namespace Vista {
 private: System::Void salToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
+
 };
 }

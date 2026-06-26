@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <nlohmann/json.hpp>
+#include "ArchivoNoEncontradoException.h"
+#include "ArchivoCorruptoException.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -30,5 +32,8 @@ namespace Modelo {
 
         // Agrega una sola linea al final del archivo de texto o CSV
         void guardarTexto(const string nuevoContenido);
+        //Metodos nuevos para leer y escribir archivos jpg
+        void verificarImagenJPG(const string& rutaOrigen);
+        bool copiarImagenJPG(const string& rutaOrigen, const string& rutaDestino);
     };
 }

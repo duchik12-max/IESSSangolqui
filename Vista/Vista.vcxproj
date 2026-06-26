@@ -132,6 +132,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="busquedaFotosForm.cpp" />
+    <ClCompile Include="fotosDoctoresForm.cpp" />
     <ClCompile Include="loginForm.cpp" />
     <ClCompile Include="mainForm.cpp" />
     <ClCompile Include="menuAdminForm.cpp" />
@@ -141,6 +143,12 @@
     <ClCompile Include="opcionesAdminForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="busquedaFotosForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="fotosDoctoresForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="loginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -164,6 +172,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="busquedaFotosForm.resx">
+      <DependentUpon>busquedaFotosForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fotosDoctoresForm.resx">
+      <DependentUpon>fotosDoctoresForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="loginForm.resx">
       <DependentUpon>loginForm.h</DependentUpon>
     </EmbeddedResource>
