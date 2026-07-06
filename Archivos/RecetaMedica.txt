@@ -1,0 +1,17 @@
+*************************
+   RECETA MEDICA
+Paciente: Juan Perez
+Cedula: 1710034065
+Fecha: 04/07/2026
+Doctor: Dr. Gregory
+Especialidad: Medicina Familiar
+----------------------------
+Diagnóstico:
+Resfriado común
+Tratamiento:
+1. Ibuprofeno 400mg - Tomar 1 tableta cada 12 horas con alimentos
+2. Loratadina 10mg - Tomar 1 tableta diaria en la manana
+Indicaciones: Reposo y tomar abundante agua.
+----------------------------
+Proxima cita: 13/07/2026
+============================

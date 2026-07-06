@@ -125,7 +125,7 @@ namespace Modelo {
         }
     }
 
-    // Reescribe el archivo CSV completo desde cero con las lineas recibidas.
+    // reescribe el archivo CSV con las lineas recibidas.
     // Si el archivo no existe, lo crea. Si existia, borra su contenido anterior.
     void Archivo::guardarCSV(const vector<string>& lineasEntrada)
     {

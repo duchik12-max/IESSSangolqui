@@ -1,5 +1,6 @@
 #pragma once
-
+#include "../Modelo/Archivo.h"
+#include <msclr/marshal_cppstd.h>
 namespace Vista {
 
 	using namespace System;
@@ -58,11 +59,11 @@ namespace Vista {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(RecetaForm::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->btnMostrar = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -79,34 +80,15 @@ namespace Vista {
 			this->panel1->Size = System::Drawing::Size(701, 543);
 			this->panel1->TabIndex = 0;
 			// 
-			// label1
+			// btnMostrar
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(274, 96);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(134, 20);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Receta Médica";
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(3, 3);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(695, 90);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox1->TabIndex = 1;
-			this->pictureBox1->TabStop = false;
-			// 
-			// richTextBox1
-			// 
-			this->richTextBox1->Location = System::Drawing::Point(99, 145);
-			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(468, 271);
-			this->richTextBox1->TabIndex = 2;
-			this->richTextBox1->Text = L"";
+			this->btnMostrar->Location = System::Drawing::Point(502, 463);
+			this->btnMostrar->Name = L"btnMostrar";
+			this->btnMostrar->Size = System::Drawing::Size(158, 57);
+			this->btnMostrar->TabIndex = 4;
+			this->btnMostrar->Text = L"Mostrar Receta";
+			this->btnMostrar->UseVisualStyleBackColor = true;
+			this->btnMostrar->Click += gcnew System::EventHandler(this, &RecetaForm::btnMostrar_Click);
 			// 
 			// button1
 			// 
@@ -118,14 +100,34 @@ namespace Vista {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &RecetaForm::button1_Click);
 			// 
-			// btnMostrar
+			// richTextBox1
 			// 
-			this->btnMostrar->Location = System::Drawing::Point(502, 463);
-			this->btnMostrar->Name = L"btnMostrar";
-			this->btnMostrar->Size = System::Drawing::Size(158, 57);
-			this->btnMostrar->TabIndex = 4;
-			this->btnMostrar->Text = L"Mostrar Receta";
-			this->btnMostrar->UseVisualStyleBackColor = true;
+			this->richTextBox1->Location = System::Drawing::Point(99, 145);
+			this->richTextBox1->Name = L"richTextBox1";
+			this->richTextBox1->Size = System::Drawing::Size(468, 271);
+			this->richTextBox1->TabIndex = 2;
+			this->richTextBox1->Text = L"";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(3, 3);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(695, 90);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 1;
+			this->pictureBox1->TabStop = false;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(274, 96);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(134, 20);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Receta Médica";
 			// 
 			// RecetaForm
 			// 
@@ -145,5 +147,31 @@ namespace Vista {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
+	//ruta del archivo
+	string rutaTxt = "C:\\Users\\PC\\Documents\\Salesiana\\Segundo Semestre\\POO\\Proyectos_Visual\\ProyHospitalKD\\IESSSangolqui\\Archivos\\RecetaMedica.txt";
+
+	Modelo::Archivo archivo(rutaTxt, "Archivo de receta medica");
+
+	vector<string> lineas;
+	//reutilizo el metodo leerCSV ya que solo lee lineas
+	bool leido = archivo.leerCSV(lineas);
+
+	if (!leido || lineas.empty())
+	{
+		MessageBox::Show("No se pudo leer el archivo o esta vacio.", "Error",MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		return;
+	}
+
+	//limpiar el RichTextBox antes de cargar
+	richTextBox1->Clear();
+
+	// Agregar cada linea respetando el formato original
+	for (const string& linea : lineas)
+	{
+		String^ lineaManaged = msclr::interop::marshal_as<String^>(linea);
+		richTextBox1->AppendText(lineaManaged + "\n");
+	}
+}
 };
 }
