@@ -1,5 +1,5 @@
 #pragma once
-
+#include "busquedaHorariosForm.h"
 namespace Vista {
 
 	using namespace System;
@@ -43,6 +43,7 @@ namespace Vista {
 	private: System::Windows::Forms::ToolStripMenuItem^ boticarioToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ laboratorioToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ horariosDeTrabajoToolStripMenuItem;
 
 
 	private:
@@ -67,6 +68,7 @@ namespace Vista {
 			this->boticarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->laboratorioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->horariosDeTrabajoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -104,9 +106,9 @@ namespace Vista {
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->doctorToolStripMenuItem,
-					this->boticarioToolStripMenuItem, this->laboratorioToolStripMenuItem, this->salirToolStripMenuItem
+					this->boticarioToolStripMenuItem, this->laboratorioToolStripMenuItem, this->horariosDeTrabajoToolStripMenuItem, this->salirToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -143,6 +145,14 @@ namespace Vista {
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &menuPersonalForm::salirToolStripMenuItem_Click);
 			// 
+			// horariosDeTrabajoToolStripMenuItem
+			// 
+			this->horariosDeTrabajoToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"horariosDeTrabajoToolStripMenuItem.Image")));
+			this->horariosDeTrabajoToolStripMenuItem->Name = L"horariosDeTrabajoToolStripMenuItem";
+			this->horariosDeTrabajoToolStripMenuItem->Size = System::Drawing::Size(173, 24);
+			this->horariosDeTrabajoToolStripMenuItem->Text = L"Horarios de trabajo";
+			this->horariosDeTrabajoToolStripMenuItem->Click += gcnew System::EventHandler(this, &menuPersonalForm::horariosDeTrabajoToolStripMenuItem_Click);
+			// 
 			// menuPersonalForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -169,5 +179,9 @@ namespace Vista {
 	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+private: System::Void horariosDeTrabajoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	busquedaHorariosForm^ busquedaHorarios = gcnew busquedaHorariosForm();
+	busquedaHorarios->Show();
+}
 };
 }

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "RecetaForm.h"
 namespace Vista {
 
 	using namespace System;
@@ -126,6 +126,7 @@ namespace Vista {
 			this->tratamientoToolStripMenuItem->Name = L"tratamientoToolStripMenuItem";
 			this->tratamientoToolStripMenuItem->Size = System::Drawing::Size(123, 24);
 			this->tratamientoToolStripMenuItem->Text = L"Tratamiento";
+			this->tratamientoToolStripMenuItem->Click += gcnew System::EventHandler(this, &menuPacienteForm::tratamientoToolStripMenuItem_Click);
 			// 
 			// agendarToolStripMenuItem
 			// 
@@ -168,5 +169,9 @@ namespace Vista {
 	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+private: System::Void tratamientoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	RecetaForm^ receta = gcnew RecetaForm();
+	receta->Show();
+}
 };
 }

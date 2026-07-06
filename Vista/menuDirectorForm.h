@@ -1,6 +1,7 @@
 #pragma once
 #include "fotosDoctoresForm.h"
 #include "busquedaFotosForm.h"
+#include "horariosForm.h"
 namespace Vista {
 
 	using namespace System;
@@ -68,9 +69,9 @@ namespace Vista {
 			this->informeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->asignarPersonalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->gestionarInsumosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->agregarDoctoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->verDoctoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -132,6 +133,7 @@ namespace Vista {
 			this->asignarPersonalToolStripMenuItem->Name = L"asignarPersonalToolStripMenuItem";
 			this->asignarPersonalToolStripMenuItem->Size = System::Drawing::Size(152, 24);
 			this->asignarPersonalToolStripMenuItem->Text = L"Asignar Personal";
+			this->asignarPersonalToolStripMenuItem->Click += gcnew System::EventHandler(this, &menuDirectorForm::asignarPersonalToolStripMenuItem_Click);
 			// 
 			// gestionarInsumosToolStripMenuItem
 			// 
@@ -139,14 +141,6 @@ namespace Vista {
 			this->gestionarInsumosToolStripMenuItem->Name = L"gestionarInsumosToolStripMenuItem";
 			this->gestionarInsumosToolStripMenuItem->Size = System::Drawing::Size(164, 24);
 			this->gestionarInsumosToolStripMenuItem->Text = L"Gestionar Insumos";
-			// 
-			// salirToolStripMenuItem
-			// 
-			this->salirToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"salirToolStripMenuItem.Image")));
-			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(72, 24);
-			this->salirToolStripMenuItem->Text = L"Salir";
-			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &menuDirectorForm::salirToolStripMenuItem_Click);
 			// 
 			// agregarDoctoresToolStripMenuItem
 			// 
@@ -163,6 +157,14 @@ namespace Vista {
 			this->verDoctoresToolStripMenuItem->Size = System::Drawing::Size(128, 24);
 			this->verDoctoresToolStripMenuItem->Text = L"Ver Doctores";
 			this->verDoctoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &menuDirectorForm::verDoctoresToolStripMenuItem_Click);
+			// 
+			// salirToolStripMenuItem
+			// 
+			this->salirToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"salirToolStripMenuItem.Image")));
+			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(72, 24);
+			this->salirToolStripMenuItem->Text = L"Salir";
+			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &menuDirectorForm::salirToolStripMenuItem_Click);
 			// 
 			// menuDirectorForm
 			// 
@@ -197,6 +199,10 @@ private: System::Void agregarDoctoresToolStripMenuItem_Click(System::Object^ sen
 private: System::Void verDoctoresToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	busquedaFotosForm^ busquedaFotos = gcnew busquedaFotosForm();
 	busquedaFotos->Show();
+}
+private: System::Void asignarPersonalToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	horariosForm^ horarios = gcnew horariosForm();
+	horarios->Show();
 }
 };
 }

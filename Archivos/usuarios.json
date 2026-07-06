@@ -1,74 +1,83 @@
 [
   {
-    "nombre": "Carlos Wendel",
     "cedula": "1712345148",
-    "correo": "carlos.wen@gmail.com",
-    "usuario": "adminC",
     "contrasena": "admin123",
+    "correo": "carlos.wen@gmail.com",
+    "estado": true,
+    "nombre": "Carlos Wendel",
     "perfil": "Administrador",
-    "estado": true
+    "usuario": "adminC"
   },
   {
-    "nombre": "Dra.Maria Fernandez",
     "cedula": "1715765432",
-    "correo": "marif@hotmail.com",
-    "usuario": "directorMF",
     "contrasena": "director987",
+    "correo": "marif@hotmail.com",
+    "estado": true,
+    "nombre": "Dra.Maria Fernandez",
     "perfil": "Director",
-    "estado": true
+    "usuario": "directorMF"
   },
   {
-    "nombre": "Dr. Gregory",
     "cedula": "1755296647",
-    "correo": "gregor12@gmail.com",
-    "usuario": "docGR",
     "contrasena": "personal1",
+    "correo": "gregor12@gmail.com",
+    "estado": true,
+    "nombre": "Dr. Gregory",
     "perfil": "Personal",
-    "estado": true
+    "usuario": "docGR"
   },
   {
-    "nombre": "Kevin Duchi",
     "cedula": "1755074463",
-    "correo": "duchi.k@gmail.com",
-    "usuario": "redK",
     "contrasena": "KDprueba",
+    "correo": "duchi.k@gmail.com",
+    "estado": true,
+    "nombre": "Kevin Duchi",
     "perfil": "Paciente",
-    "estado": true
+    "usuario": "redK"
   },
   {
-    "nombre": "Ana Lopez",
     "cedula": "1781299154",
-    "correo": "ana.lopez@outlook.com",
-    "usuario": "Lopeza",
     "contrasena": "paciente22",
+    "correo": "ana.lopez@outlook.com",
+    "estado": false,
+    "nombre": "Ana Lopez",
     "perfil": "Paciente",
-    "estado": false
+    "usuario": "Lopeza"
   },
   {
-    "nombre": "Antonio Suarez",
     "cedula": "1799912345",
-    "correo": "antonio.sur@hotmail.com",
-    "usuario": "antoad",
     "contrasena": "admanton",
+    "correo": "antonio.sur@hotmail.com",
+    "estado": false,
+    "nombre": "Antonio Suarez",
     "perfil": "Administrador",
-    "estado": false
+    "usuario": "antoad"
   },
   {
-    "nombre": "Dr. Many",
     "cedula": "1799143451",
-    "correo": "man12@outlook.com",
-    "usuario": "many1",
     "contrasena": "personal33",
+    "correo": "man12@outlook.com",
+    "estado": false,
+    "nombre": "Dr. Many",
     "perfil": "Personal",
-    "estado": false
+    "usuario": "many1"
   },
   {
-    "nombre": "Dr. Emilio Puertas",
     "cedula": "1734795432",
-    "correo": "emiport@gmail.com",
-    "usuario": "directorPuertas",
     "contrasena": "director1",
+    "correo": "emiport@gmail.com",
+    "estado": false,
+    "nombre": "Dr. Emilio Puertas",
     "perfil": "Director",
-    "estado": false
+    "usuario": "directorPuertas"
+  },
+  {
+    "cedula": "1710034065",
+    "contrasena": "pr78",
+    "correo": "prueba@gmail.com",
+    "estado": false,
+    "nombre": "Prueba",
+    "perfil": "Paciente",
+    "usuario": "prpac"
   }
 ]

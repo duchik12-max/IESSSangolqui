@@ -30,8 +30,7 @@ Doctor ControladorDoctor::parsearLinea(const string& linea)
 
 bool ControladorDoctor::guardarDoctor(const string& nombre, const string& especialidad,const string& rutaFotoOrigen)
 {
-    // Construir nombre de archivo destino usando el nombre del doctor
-    // Se reemplazan espacios por guiones bajos para evitar problemas en rutas
+    // Construir nombre de archivo destino usando el nombre del doctor, se reemplazan espacios por guiones bajos
     string nombreArchivo = nombre;
     for (char& c : nombreArchivo)
         if (c == ' ') c = '_';

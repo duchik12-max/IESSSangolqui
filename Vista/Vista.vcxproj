@@ -133,7 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="busquedaFotosForm.cpp" />
+    <ClCompile Include="busquedaHorariosForm.cpp" />
     <ClCompile Include="fotosDoctoresForm.cpp" />
+    <ClCompile Include="horariosForm.cpp" />
     <ClCompile Include="loginForm.cpp" />
     <ClCompile Include="mainForm.cpp" />
     <ClCompile Include="menuAdminForm.cpp" />
@@ -141,12 +143,19 @@
     <ClCompile Include="menuPacienteForm.cpp" />
     <ClCompile Include="menuPersonalForm.cpp" />
     <ClCompile Include="opcionesAdminForm.cpp" />
+    <ClCompile Include="RecetaForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="busquedaFotosForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="busquedaHorariosForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="fotosDoctoresForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="horariosForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="loginForm.h">
@@ -170,13 +179,22 @@
     <ClInclude Include="opcionesAdminForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="RecetaForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="busquedaFotosForm.resx">
       <DependentUpon>busquedaFotosForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="busquedaHorariosForm.resx">
+      <DependentUpon>busquedaHorariosForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fotosDoctoresForm.resx">
       <DependentUpon>fotosDoctoresForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="horariosForm.resx">
+      <DependentUpon>horariosForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loginForm.resx">
       <DependentUpon>loginForm.h</DependentUpon>
@@ -198,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="opcionesAdminForm.resx">
       <DependentUpon>opcionesAdminForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecetaForm.resx">
+      <DependentUpon>RecetaForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,8 @@ namespace Modelo {
     class Trabajador : public Persona
     {
     protected:
+        string apellido;
+        int edad;
         string horaInicio;
         string horaFin;
         string dia;
@@ -16,8 +18,14 @@ namespace Modelo {
 
     public:
         Trabajador();
-        Trabajador(string nombre, string cedula, string correo,
+        Trabajador(string nombre, string apellido, int edad,
             string horaInicio, string horaFin, string dia, string area);
+
+        string getApellido() const;
+        void setApellido(string valor);
+
+        int getEdad() const;
+        void setEdad(int valor);
 
         string getHoraInicio() const;
         void setHoraInicio(string valor);

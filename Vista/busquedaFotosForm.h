@@ -195,14 +195,13 @@ namespace Vista {
 		// Ajustar alto de filas para que la imagen sea visible
 		dataGridView1->RowTemplate->Height = 80;
 
-		// Poblar filas
 		for (const Modelo::Doctor& doc : doctores)
 		{
 			String^ nombre = msclr::interop::marshal_as<String^>(doc.getNombre());
 			String^ especialidad = msclr::interop::marshal_as<String^>(doc.getEspecialidad());
 			String^ rutaFoto = msclr::interop::marshal_as<String^>(doc.getRutaFoto());
 
-			// Cargar imagen si el archivo existe
+			// Cargar imagen 
 			System::Drawing::Image^ imagen = nullptr;
 			if (System::IO::File::Exists(rutaFoto))
 			{
